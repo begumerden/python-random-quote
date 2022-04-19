@@ -1,19 +1,26 @@
 import random
-
-
 def primary():
-    print("Keep it logically awesome.")
+    more_content = "Your time is limited, so don't waste it living someone else's life"
 
-    f = open("quotes.txt")
+    print("Opening a file.")
+    f = open("quotes.txt", "a+")
     quotes = f.readlines()
+
+    iterate(quotes)
+    print("New Content Added to File")
+
+    iterate(quotes)
+
+    f.write(more_content)
     f.close()
 
-    print(quotes)
+    iterate(quotes)
 
-    last = 13
-    rnd = random.randint(0, last)
 
-    print(quotes[rnd])
+def iterate(quotes):
+    for i in range(len(quotes)):
+        rnd = random.randint(0, i)
+        print(quotes[rnd].replace("\n", ","))
 
 
 if __name__ == "__main__":
